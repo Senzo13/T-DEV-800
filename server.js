@@ -1,4 +1,11 @@
-import initDbConnect from "./src/config/database/db";
+import initDbConnect from "./src/config/database/db.js";
+import express from "express";
+import http from "http";
+import dotenv from "dotenv";
+import cors from "cors";
+import API_ROUTES from "./src/routes/api.js";
+
+const PAGE = "PAGE - ./SERVER.JS";
 
 /**
  *
@@ -15,15 +22,16 @@ dotenv.config();
 
 const APP = express();
 const SERVER = http.createServer(APP);
-const HOSTNAME = "localhost";
-const PORT = 4080;
+const HOSTNAME = process.env.SERVER_HOSTNAME || "localhost";
+const PORT = process.env.SERVER_PORT || 3080;
 
-/** @function initDbConnect - Initialize the connection to the database. */
+/** @function initDbConnect - INITIALIZE THE CONNECTION TO THE MONGO DATABASE. */
 initDbConnect();
+/***/
 
 APP.use(
   cors({
-    origin: ["http://127.0.0.1:3080", "http://localhost:3080"],
+    origin: ["http://127.0.0.1", "http://localhost"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -31,7 +39,9 @@ APP.use(
 
 APP.use(express.json());
 APP.use(express.urlencoded({ extended: true }));
+APP.use("/api", API_ROUTES);
 
 SERVER.listen(PORT, () => {
-  console.log(`Server listening on http://${HOSTNAME}:${PORT}`);
+  console.log("\x1b[1m%s\x1b[0m", `*** ARDUINO API SERVER ***`);
+  console.log(`${PAGE} > listening on http://${HOSTNAME}:${PORT} ✔️`);
 });
