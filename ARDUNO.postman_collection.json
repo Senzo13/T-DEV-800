@@ -1,70 +1,144 @@
 {
-  "info": {
-    "_postman_id": "8c067657-b84a-4425-a0a6-1483de165000",
-    "name": "ARDUNO",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "12055836"
-  },
-  "item": [
-    {
-      "name": "CREATE SENSOR",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "url": {
-          "raw": "http://127.0.0.1:3080/api/sensors/2/424242",
-          "protocol": "http",
-          "host": ["127", "0", "0", "1"],
-          "port": "3080",
-          "path": ["api", "sensors", "2", "424242"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "UPDATE SENSOR BY ID",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "url": {
-          "raw": "http://127.0.0.1:3080/api/sensors/64503d9f5527de7ed324f02a/6/424242",
-          "protocol": "http",
-          "host": ["127", "0", "0", "1"],
-          "port": "3080",
-          "path": ["api", "sensors", "64503d9f5527de7ed324f02a", "6", "424242"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "SENSORS - GET_ALL",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://127.0.0.1:3080/api/sensors/424242",
-          "protocol": "http",
-          "host": ["127", "0", "0", "1"],
-          "port": "3080",
-          "path": ["api", "sensors", "424242"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "SENSORS - BY ID",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://127.0.0.1:3080/api/sensors/64503d9f5527de7ed324f02a/424242",
-          "protocol": "http",
-          "host": ["127", "0", "0", "1"],
-          "port": "3080",
-          "path": ["api", "sensors", "64503d9f5527de7ed324f02a", "424242"]
-        }
-      },
-      "response": []
-    }
-  ]
+	"info": {
+		"_postman_id": "0457f432-2476-46a3-b2ee-f4917e841a52",
+		"name": "ARDUNO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24657957",
+		"_collection_link": "https://epi-t-web-800.postman.co/workspace/T-WEB-800~50e3d096-240f-4f7a-ae26-a49bbc984c48/collection/24657957-0457f432-2476-46a3-b2ee-f4917e841a52?action=share&creator=24657957&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "CREATE SENSOR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3080/api/sensors/2/424242",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"sensors",
+						"2",
+						"424242"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE SENSOR BY ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3080/api/sensors/64503d9f5527de7ed324f02a/6/424242",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"sensors",
+						"64503d9f5527de7ed324f02a",
+						"6",
+						"424242"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SENSORS - GET_ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3080/api/sensors/424242",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"sensors",
+						"424242"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SENSORS - BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3080/api/sensors/64503d9f5527de7ed324f02a/424242",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"sensors",
+						"64503d9f5527de7ed324f02a",
+						"424242"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SENSORS - BY NAME",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE SENSOR",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3080/api/sensors/6450f0c8cc2e830b373f70da/424242",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"sensors",
+						"6450f0c8cc2e830b373f70da",
+						"424242"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
