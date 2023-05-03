@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "0457f432-2476-46a3-b2ee-f4917e841a52",
+		"_postman_id": "8c067657-b84a-4425-a0a6-1483de165000",
 		"name": "ARDUNO",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "24657957",
-		"_collection_link": "https://epi-t-web-800.postman.co/workspace/T-WEB-800~50e3d096-240f-4f7a-ae26-a49bbc984c48/collection/24657957-0457f432-2476-46a3-b2ee-f4917e841a52?action=share&creator=24657957&source=collection_link"
+		"_exporter_id": "12055836"
 	},
 	"item": [
 		{
@@ -12,8 +11,17 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"poubelle-3\",\r\n    \"value\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:3080/api/sensors/2/424242",
+					"raw": "http://127.0.0.1:3080/api/sensors/424242",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -25,7 +33,6 @@
 					"path": [
 						"api",
 						"sensors",
-						"2",
 						"424242"
 					]
 				}
@@ -33,12 +40,21 @@
 			"response": []
 		},
 		{
-			"name": "UPDATE SENSOR BY ID",
+			"name": "UPDATE SENSOR - BY ID",
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\" :8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:3080/api/sensors/64503d9f5527de7ed324f02a/6/424242",
+					"raw": "http://127.0.0.1:3080/api/sensors/64527e388b1b87ebeb6ab9ee/424242",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -50,8 +66,7 @@
 					"path": [
 						"api",
 						"sensors",
-						"64503d9f5527de7ed324f02a",
-						"6",
+						"64527e388b1b87ebeb6ab9ee",
 						"424242"
 					]
 				}
@@ -88,7 +103,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3080/api/sensors/64503d9f5527de7ed324f02a/424242",
+					"raw": "http://127.0.0.1:3080/api/sensorsById/645282b1b271d23ded9be27a/424242",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -99,8 +114,8 @@
 					"port": "3080",
 					"path": [
 						"api",
-						"sensors",
-						"64503d9f5527de7ed324f02a",
+						"sensorsById",
+						"645282b1b271d23ded9be27a",
 						"424242"
 					]
 				}
@@ -109,19 +124,47 @@
 		},
 		{
 			"name": "SENSORS - BY NAME",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"poubelle-2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3080/api/sensorsByName/424242",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"sensorsByName",
+						"424242"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "DELETE SENSOR",
+			"name": "SENSOR - DELETE",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3080/api/sensors/6450f0c8cc2e830b373f70da/424242",
+					"raw": "http://127.0.0.1:3080/api/sensors/645282b5b271d23ded9be27c/424242",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -133,7 +176,7 @@
 					"path": [
 						"api",
 						"sensors",
-						"6450f0c8cc2e830b373f70da",
+						"645282b5b271d23ded9be27c",
 						"424242"
 					]
 				}

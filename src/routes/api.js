@@ -1,4 +1,4 @@
-import express from 'express'
+import express from "express";
 import {
   getSensorById,
   getSensorByName,
@@ -6,14 +6,26 @@ import {
   getSensorAll,
   createSensor,
   updateSensor,
-} from '../controllers/arduino/sensors.js'
+} from "../controllers/arduino/sensors.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/sensors/:id/:key', getSensorById)
-router.get('/sensors/:key', getSensorAll)
-router.post('/sensors/:count/:key', createSensor)
-router.put('/sensors/:id/:count/:key', updateSensor)
-router.get('/sensors/:name/:key', getSensorByName)
-router.delete('/sensors/:id/:key', deleteSensor)
-export default router
+router.get("/sensorsById/:id/:key", getSensorById);
+/** ROUTE ONLY WITH REQ PARAMS */
+
+router.get("/sensorsByName/:key", getSensorByName);
+/** ROUTE WITH REQ PARAMS AND REQ BODY */
+
+router.get("/sensors/:key", getSensorAll);
+/** ROUTE ONLY WITH REQ PARAMS */
+
+router.post("/sensors/:key", createSensor);
+/** ROUTE ONLY WITH REQ PARAMS */
+
+router.put("/sensors/:id/:key", updateSensor);
+/** ROUTE WITH REQ PARAMS AND REQ BODY */
+
+router.delete("/sensors/:id/:key", deleteSensor);
+/** ROUTE ONLY WITH REQ PARAMS */
+
+export default router;
