@@ -66,8 +66,8 @@ const createSensor = async (req, res) => {
 /** @function updateSensor - UPDATE A SENSOR. */
 const updateSensor = async (req, res) => {
   const response = res
-  const { id, count, key } = req.params
-  updateSensorService({ response, id, value, key })
+  const { id, value, name, key } = req.params
+  updateSensorService({ response, id, name, value, key })
     .then((sensor) => {
       res.status(200).json(sensor)
     })

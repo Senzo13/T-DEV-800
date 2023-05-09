@@ -171,10 +171,10 @@ export const createSensorService = async (data) => {
 
 export const updateSensorService = async (data) => {
   logMessage('calling', 'updateSensorService...')
-  const { id, value, key, response } = data
+  const { id, value, key, name, response } = data
   return new Promise(async (resolve, reject) => {
     try {
-      const sensor = await Sensor.findById(id)
+      const sensor = await Sensor.findById(name)
       if (!sensor) {
         return response.status(404).json({ message: 'Sensor not found' })
       }

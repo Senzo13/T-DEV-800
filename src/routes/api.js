@@ -12,8 +12,8 @@ const router = express.Router()
 
 router.get('/sensors/:id/:key', getSensorById)
 router.get('/sensors/:key', getSensorAll)
-router.post('/sensors/:count/:key', createSensor)
-router.put('/sensors/:id/:count/:key', updateSensor)
+router.post('/sensors/:value/:key', createSensor)
+router.put('/sensors/:name/:value/:key', updateSensor)
 router.get('/sensors/:name/:key', getSensorByName)
 router.delete('/sensors/:id/:key', deleteSensor)
 export default router
