@@ -24,7 +24,8 @@ const getSensorById = async (req, res) => {
 /** @function getSensorByName - GET ALL SENSORS. */
 const getSensorByName = async (req, res) => {
   const response = res
-  const { name, key } = req.params
+  const { key } = req.params
+  const { name } = req.body
   getSensorByNameService({ response, name, key })
     .then((sensor) => {
       res.status(200).json(sensor)
@@ -52,7 +53,8 @@ const getSensorAll = async (req, res) => {
 /** @function createSensor - CREATE A NEW SENSOR. */
 const createSensor = async (req, res) => {
   const response = res
-  const { name, value, key } = req.params
+  const { key } = req.params
+  const { name, value } = req.body
   createSensorService({ response, name, value, key })
     .then((sensor) => {
       res.status(200).json(sensor)
@@ -66,8 +68,9 @@ const createSensor = async (req, res) => {
 /** @function updateSensor - UPDATE A SENSOR. */
 const updateSensor = async (req, res) => {
   const response = res
-  const { id, value, name, key } = req.params
-  updateSensorService({ response, id, name, value, key })
+  const { name, key } = req.params
+  const { value } = req.body
+  updateSensorService({ response, name, value, key })
     .then((sensor) => {
       res.status(200).json(sensor)
     })

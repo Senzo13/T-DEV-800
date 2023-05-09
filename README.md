@@ -1,3 +1,5 @@
 # T-DEV-811
 
-![image](https://user-images.githubusercontent.com/52446531/235550045-24109d1d-c67d-4f5c-9d9b-dda24f6ceb2f.png)
+<div align="center" style="text-align:center">
+<img src="ARDUINO-GIF.gif" alt="Gif" width="1000px"/>
+</div>

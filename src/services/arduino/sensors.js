@@ -40,6 +40,39 @@ export const getSensorByIdService = async (data) => {
 
 /**
  *
+ * @function getSensorByNameService - GET SENSOR DATA BY NAME.
+ * @param {String} name - The name of the sensor.
+ * @param {Object} response - The response object.
+ * @returns {Promise} - The promise object of the sensors.
+ *
+ **/
+
+export const getSensorByNameService = async (data) => {
+  logMessage('calling', 'getsensorByname...')
+  const { key, name, response } = data
+  return new Promise(async (resolve, reject) => {
+    try {
+      const sensor = await Sensor.findOne({ name: name })
+      if (!sensor) {
+        logMessage('warning', 'Sensor not found')
+        return response.status(404).json({ message: 'Sensor not found' })
+      }
+      if (key !== SECRET) {
+        logMessage('access denied', '401')
+        return response.status(401).json({ message: 'Unauthorized' })
+      }
+
+      logMessage('response', response.statusCode)
+      resolve(sensor)
+    } catch (error) {
+      logMessage('error', error)
+      reject(error)
+    }
+  })
+}
+
+/**
+ *
  * @function getSensorAllService - GET ALL SENSORS.
  *
  * @param {Object} response - The response object.
@@ -53,34 +86,6 @@ export const getSensorAllService = async (data) => {
   return new Promise((resolve, reject) => {
     try {
       const sensors = Sensor.find()
-      if (key !== SECRET) {
-        logMessage('access denied', '401')
-        return response.status(401).json({ message: 'Unauthorized' })
-      }
-      logMessage('response', response.statusCode)
-      resolve(sensors)
-    } catch (error) {
-      logMessage('error', error)
-      reject(error)
-    }
-  })
-}
-
-/**
- *
- * @function getSensorByNameService - GET SENSOR DATA BY NAME.
- * @param {String} name - The name of the sensor.
- * @param {Object} response - The response object.
- * @returns {Promise} - The promise object of the sensors.
- *
- **/
-
-export const getSensorByNameService = async (data) => {
-  logMessage('calling', 'getsensorByname...')
-  const { key, name, response } = data
-  return new Promise((resolve, reject) => {
-    try {
-      const sensors = Sensor.find(name)
       if (key !== SECRET) {
         logMessage('access denied', '401')
         return response.status(401).json({ message: 'Unauthorized' })
@@ -128,8 +133,8 @@ export const deleteSensorService = async (data) => {
  *
  * @function createSensorService - CREATE A SENSOR.
  *
- * @param {Number} value - The value of the sensor.
- * @param {String} name - The name of the sensor.
+ * @param {Number} value - The value of the sensor, type number.
+ * @param {String} name - The name of the sensor, type string.
  * @param {Object} response - The response object.
  * @returns {Promise} - The promise object of the sensor.
  *
@@ -138,16 +143,30 @@ export const deleteSensorService = async (data) => {
 export const createSensorService = async (data) => {
   logMessage('calling', 'createSensorService...')
   const { response, value, name, key } = data
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       const sensor = new Sensor({
         value: value,
         name: name,
       })
+      if (typeof value !== 'number') {
+        logMessage('warning', 'Value must be a number')
+        return response.status(400).json({ message: 'Value must be a number' })
+      }
       if (key !== SECRET) {
         logMessage('access denied', '401')
         return response.status(401).json({ message: 'Unauthorized' })
       }
+
+      const existingSensor = await Sensor.findOne({ name: name })
+
+      if (existingSensor) {
+        console.log(`Sensor with name '${name}' already exists`)
+        return response
+          .status(409)
+          .json({ message: `Sensor with name '${name}' already exists` })
+      }
+
       sensor.save()
       logMessage('response', response.statusCode)
       resolve(sensor)
@@ -171,12 +190,16 @@ export const createSensorService = async (data) => {
 
 export const updateSensorService = async (data) => {
   logMessage('calling', 'updateSensorService...')
-  const { id, value, key, name, response } = data
+  const { value, key, name, response } = data
   return new Promise(async (resolve, reject) => {
     try {
       const sensor = await Sensor.findById(name)
       if (!sensor) {
         return response.status(404).json({ message: 'Sensor not found' })
+      }
+      if (typeof value !== 'number') {
+        logMessage('warning', 'Value must be a number')
+        return response.status(400).json({ message: 'Value must be a number' })
       }
       if (key !== SECRET) {
         logMessage('access denied', '401')

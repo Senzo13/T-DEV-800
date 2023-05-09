@@ -1,9 +1,22 @@
-[
-  {
-    "_id": {
-      "$oid": "64503d9f5527de7ed324f02a"
-    },
-    "__v": 0,
-    "count": 6
-  }
-]
+[{
+  "_id": {
+    "$oid": "645282aeb271d23ded9be278"
+  },
+  "name": "poubelle-1",
+  "value": 2,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645282b1b271d23ded9be27a"
+  },
+  "name": "poubelle-2",
+  "value": 2,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645282b5b271d23ded9be27c"
+  },
+  "name": "poubelle-3",
+  "value": 2,
+  "__v": 0
+}]
