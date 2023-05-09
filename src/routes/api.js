@@ -10,10 +10,10 @@ import {
 
 const router = express.Router()
 
-router.get('/sensors/:id/:key', getSensorById)
-router.get('/sensors/:key', getSensorAll)
-router.post('/sensors/:value/:key', createSensor)
-router.put('/sensors/:name/:value/:key', updateSensor)
-router.get('/sensors/:name/:key', getSensorByName)
-router.delete('/sensors/:id/:key', deleteSensor)
+router.get('/sensors/:id/', getSensorById)
+router.get('/sensors/', getSensorAll)
+router.post('/sensors/:value/', createSensor)
+router.put('/sensors/', updateSensor)
+router.get('/sensors/:name/', getSensorByName)
+router.delete('/sensors/:id/', deleteSensor)
 export default router

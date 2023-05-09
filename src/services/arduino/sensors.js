@@ -190,30 +190,26 @@ export const createSensorService = async (data) => {
 
 export const updateSensorService = async (data) => {
   logMessage('calling', 'updateSensorService...')
-  const { value, key, name, response } = data
+  const { value, name, response } = data
   return new Promise(async (resolve, reject) => {
     try {
-      const sensor = await Sensor.findById(name)
-      if (!sensor) {
-        return response.status(404).json({ message: 'Sensor not found' })
-      }
       if (typeof value !== 'number') {
         logMessage('warning', 'Value must be a number')
         return response.status(400).json({ message: 'Value must be a number' })
       }
-      if (key !== SECRET) {
-        logMessage('access denied', '401')
-        return response.status(401).json({ message: 'Unauthorized' })
+
+      const updatedSensor = await Sensor.findOneAndUpdate(
+        { name },
+        { $set: { value: value } },
+        { new: true, useFindAndModify: false }
+      )
+
+      if (!updatedSensor) {
+        return response.status(404).json({ message: 'Sensor not found' })
       }
-      sensor.value = value
-      try {
-        await sensor.save()
-        logMessage('response', response.statusCode)
-        resolve(sensor)
-      } catch (saveError) {
-        console.error('Error: save() method failed on sensor object')
-        reject(saveError)
-      }
+
+      logMessage('response', response.statusCode)
+      resolve(updatedSensor)
     } catch (error) {
       logMessage('error', error)
       reject(error)
