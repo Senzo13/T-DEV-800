@@ -53,9 +53,8 @@ const getSensorAll = async (req, res) => {
 /** @function createSensor - CREATE A NEW SENSOR. */
 const createSensor = async (req, res) => {
   const response = res
-  const { key } = req.params
   const { name, value } = req.body
-  createSensorService({ response, name, value, key })
+  createSensorService({ response, name, value })
     .then((sensor) => {
       res.status(200).json(sensor)
     })

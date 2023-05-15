@@ -12,7 +12,7 @@ const router = express.Router()
 
 router.get('/sensors/:id/', getSensorById)
 router.get('/sensors/', getSensorAll)
-router.post('/sensors/:value/', createSensor)
+router.post('/sensors/', createSensor)
 router.put('/sensors/', updateSensor)
 router.get('/sensors/:name/', getSensorByName)
 router.delete('/sensors/:id/', deleteSensor)

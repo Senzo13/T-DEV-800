@@ -153,11 +153,6 @@ export const createSensorService = async (data) => {
         logMessage('warning', 'Value must be a number')
         return response.status(400).json({ message: 'Value must be a number' })
       }
-      if (key !== SECRET) {
-        logMessage('access denied', '401')
-        return response.status(401).json({ message: 'Unauthorized' })
-      }
-
       const existingSensor = await Sensor.findOne({ name: name })
 
       if (existingSensor) {
